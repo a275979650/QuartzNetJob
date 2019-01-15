@@ -36,7 +36,8 @@ namespace QuartzNet3.Core
         {
             try
             {
-                ScheduleList.Remove(scheduleEntity);
+                var item = ScheduleList.Find(x => x.JobId == scheduleEntity.JobId);
+                ScheduleList.Remove(item);
                 ScheduleList.Add(scheduleEntity);
             }
             catch (Exception ex)

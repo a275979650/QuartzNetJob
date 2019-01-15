@@ -117,14 +117,15 @@ namespace Five.QuartzNetJob.Web.Controllers
             ScheduleManage.Instance.AddScheduleList(scheduleEntity);
             // 运行任务调度
             BaseQuartzNetResult result;
-            if (schedule.TriggerType == 0)
-            {
-                result = SchedulerCenter.Instance.RunScheduleJob<ScheduleManage, SubmitJobTask>(schedule.JobGroup, schedule.JobName).Result;
-            }
-            else
-            {
-                result = SchedulerCenter.Instance.RunScheduleJob<ScheduleManage>(schedule.JobGroup, schedule.JobName).Result;
-            }
+            //if (schedule.TriggerType == 0)
+            //{
+            //    result = SchedulerCenter.Instance.RunScheduleJob<ScheduleManage, SubmitJobTask>(schedule.JobGroup, schedule.JobName).Result;
+            //}
+            //else
+            //{
+            //    result = SchedulerCenter.Instance.RunScheduleJob<ScheduleManage>(schedule.JobGroup, schedule.JobName).Result;
+            //}
+            result = SchedulerCenter.Instance.RunScheduleJob<ScheduleManage>(schedule.JobGroup, schedule.JobName).Result;
             Console.Out.WriteLineAsync("任务执行状态：" + result.Msg);
             if (result.Code == 1000)
             {
